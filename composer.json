@@ -8,5 +8,8 @@
             "email": "mikhailpazyuk@yandex.ru"
         }
     ],
+    "bin": [
+    "bin/brain-games"
+    ],
     "require": {}
 }
