@@ -10,10 +10,9 @@ function numParity($num)
     return $num % 2 === 0;
 }
 
-$count = 0;
-
 function run()
 {
+    $count = 0;
     $correctAnswersCount = 3;
     line('Welcome to Brain Games!');
     line('Answer "yes" if the number is even, otherwise answer "no".');
