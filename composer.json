@@ -11,7 +11,6 @@
         "bin/brain-games",
         "bin/brain-even"
     ],
-    "description": "php-project-lvl1",
     "type": "library",
     "license": "MIT",
     "scripts": {
