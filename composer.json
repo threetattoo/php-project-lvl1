@@ -1,7 +1,6 @@
 {
     "name": "threetattoo/php-project-lvl1",
     "description": "Just a training php project",
-    "type": "project",
     "authors": [
         {
             "name": "Threetattoo",
