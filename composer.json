@@ -15,7 +15,6 @@
     "description": "php-project-lvl1",
     "type": "library",
     "license": "MIT",
-    "minimum-stability": "stable",
     "scripts": {
         "phpcs": "phpcs"
     },
