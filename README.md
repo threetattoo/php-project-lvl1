@@ -4,3 +4,5 @@
 <a href="https://asciinema.org/a/290474" target="_blank"><img src="https://asciinema.org/a/290474.svg" /></a>
 <p>Установка пакета глобально и вызов brain-calc как обычной программы.</p>
 <a href="https://asciinema.org/a/290784" target="_blank"><img src="https://asciinema.org/a/290784.svg" /></a>
+<p>Установка пакета глобально и вызов brain-gcd как обычной программы.</p>
+<a href="https://asciinema.org/a/291452" target="_blank"><img src="https://asciinema.org/a/291452.svg" /></a>
