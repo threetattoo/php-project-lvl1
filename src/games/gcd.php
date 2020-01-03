@@ -32,6 +32,11 @@ function run()
             $count++;
         } else {
             line("{$answer} is wrong answer ;(. Correct answer was '$result'.");
+            line("Let's try again, %s!", $name);
+            break;
         }
     } while ($count < $correctAnswersCount);
+    if ($count == $correctAnswersCount) {
+        line("Congratulations, %s!", $name);
+    }
 }

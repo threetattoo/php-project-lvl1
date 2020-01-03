@@ -47,5 +47,7 @@ function run()
             break;
         }
     } while ($count < $correctAnswersCount);
-    line("Congratulations, %s!", $name);
+    if ($count == $correctAnswersCount) {
+        line("Congratulations, %s!", $name);
+    }
 }
