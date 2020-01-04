@@ -7,12 +7,15 @@ use function cli\prompt;
 
 function isPrime($num)
 {
-    for ($x = 2; $x <= sqrt($num); $x++) {
-        if (!($num % $x)) {
+    if ($num == 1) {
+        return false;
+    }
+    for ($i = 2; $i <= sqrt($num); $i++) {
+        if (!($num % $i)) {
             return false;
         }
-        return true;
     }
+    return true;
 }
 
 function run()
