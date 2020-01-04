@@ -28,7 +28,7 @@ function run()
     line("Hello, %s!", $name);
     do {
         $randNum = mt_rand(1, 100);
-        if (isprime($randNum)) {
+        if (isPrime($randNum)) {
             $correctAnswer = "yes";
         } else {
             $correctAnswer = "no";
