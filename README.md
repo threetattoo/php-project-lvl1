@@ -8,3 +8,5 @@
 <a href="https://asciinema.org/a/291452" target="_blank"><img src="https://asciinema.org/a/291452.svg" /></a>
 <p>Установка пакета глобально и вызов brain-progression как обычной программы.</p>
 <a href="https://asciinema.org/a/291752" target="_blank"><img src="https://asciinema.org/a/291752.svg" /></a>
+<p>Установка пакета глобально и вызов brain-prime как обычной программы.</p>
+<a href="https://asciinema.org/a/291845" target="_blank"><img src="https://asciinema.org/a/291845.svg" /></a>
