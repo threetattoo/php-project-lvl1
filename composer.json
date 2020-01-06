@@ -1,28 +1,32 @@
 {
     "name": "threetattoo/php-project-lvl1",
     "description": "Just a training php project",
+    "type": "project",
+    "keywords": [
+        "game",
+        "project",
+        "training"
+    ],
+    "license": "MIT",
     "authors": [
         {
             "name": "Threetattoo",
             "email": "mikhailpazyuk@yandex.ru"
         }
     ],
+    "scripts": {
+        "phpcs": "phpcs"
+    },
     "bin": [
-        "bin/brain-games",
         "bin/brain-even",
         "bin/brain-calc",
         "bin/brain-gcd",
         "bin/brain-progression",
         "bin/brain-prime"
     ],
-    "type": "library",
-    "license": "MIT",
-    "scripts": {
-        "phpcs": "phpcs"
-    },
     "autoload": {
         "files": [
-            "src/Cli.php",
+            "src/core.php",
             "src/games/even.php",
             "src/games/calc.php",
             "src/games/gcd.php",
