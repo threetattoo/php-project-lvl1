@@ -1,9 +1,8 @@
 <?php
 
-namespace BrainGames\Prime;
+namespace Brain\Games\Prime;
 
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Core\gameProcessing;
 
 function isPrime($num)
 {
@@ -20,31 +19,16 @@ function isPrime($num)
 
 function run()
 {
-    $count = 0;
-    $correctAnswersCount = 3;
-    line('Welcome to Brain Games!');
-    line('Answer "yes" if given number is prime. Otherwise answer "no".');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    do {
+    $gameRule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    $gameDataMaking = function () {
         $randNum = mt_rand(1, 100);
         if (isPrime($randNum)) {
-            $correctAnswer = "yes";
+            $gameCorrectAnswer = "yes";
         } else {
-            $correctAnswer = "no";
+            $gameCorrectAnswer = "no";
         }
-        line("Question: %s", $randNum);
-        $answer = prompt('Your answer: ');
-        if ($answer === (string) $correctAnswer) {
-            line("Correct!");
-            $count++;
-        } else {
-            line("{$answer} is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
-            line("Let's try again, %s!", $name);
-            break;
-        }
-    } while ($count < $correctAnswersCount);
-    if ($count == $correctAnswersCount) {
-        line("Congratulations, %s!", $name);
-    }
+        $gameQuestion = (string) $randNum;
+        return [$gameQuestion, $gameCorrectAnswer];
+    };
+    gameProcessing($gameRule, $gameDataMaking);
 }

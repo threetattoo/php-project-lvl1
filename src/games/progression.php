@@ -1,9 +1,8 @@
 <?php
 
-namespace BrainGames\Progression;
+namespace Brain\Games\Progression;
 
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Core\gameProcessing;
 
 function progressionGen()
 {
@@ -15,32 +14,17 @@ function progressionGen()
 
 function run()
 {
-    $count = 0;
-    $correctAnswersCount = 3;
-    line('Welcome to Brain Games!');
-    line('What number is missing in the progression?');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    do {
+    $gameRule = 'What number is missing in the progression?';
+    $gameDataMaking = function () {
         $progression = progressionGen();
         $progressionLength = count($progression) - 1;
         $randIndex = mt_rand(0, $progressionLength);
         $hiddenDigit = $progression[$randIndex];
         $replacement = '..';
         $progression[$randIndex] = $replacement;
-        $hiddenDigitProgression = implode(' ', $progression);
-        line("Question: %s", $hiddenDigitProgression);
-        $answer = prompt('Your answer: ');
-        if ($answer === (string) $hiddenDigit) {
-            line("Correct!");
-            $count++;
-        } else {
-            line("{$answer} is wrong answer ;(. Correct answer was '$hiddenDigit'.");
-            line("Let's try again, %s!", $name);
-            break;
-        }
-    } while ($count < $correctAnswersCount);
-    if ($count == $correctAnswersCount) {
-        line("Congratulations, %s!", $name);
-    }
+        $gameQuestion = implode(' ', $progression);
+        $gameCorrectAnswer = (string) $hiddenDigit;
+        return [$gameQuestion, $gameCorrectAnswer];
+    };
+    gameProcessing($gameRule, $gameDataMaking);
 }
