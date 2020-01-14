@@ -1,13 +1,14 @@
 <?php
 
-namespace Brain\Games\Calc;
+namespace BrainGames\games\calc;
 
-use function BrainGames\Core\gameProcessing;
+use function BrainGames\core\processingGame;
+
+const GAME_RULE = 'What is the result of the expression?';
 
 function run()
 {
-    $gameRule = 'What is the result of the expression?';
-    $gameDataMaking = function () {
+    $makingGameData = function () {
         $operators = array('+', '-', '*');
         $randIndex = array_rand($operators, 1);
         $currentOperator = $operators[$randIndex];
@@ -24,11 +25,11 @@ function run()
                 $result = $leftOperand * $rightOperand;
                 break;
             default:
-                line('It is not operator!');
+                null;
         }
         $gameQuestion = "$leftOperand $currentOperator $rightOperand";
         $gameCorrectAnswer = (string) $result;
         return [$gameQuestion, $gameCorrectAnswer];
     };
-    gameProcessing($gameRule, $gameDataMaking);
+    processingGame(GAME_RULE, $makingGameData);
 }

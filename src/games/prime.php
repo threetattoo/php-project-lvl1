@@ -1,12 +1,14 @@
 <?php
 
-namespace Brain\Games\Prime;
+namespace BrainGames\games\prime;
 
-use function BrainGames\Core\gameProcessing;
+use function BrainGames\core\processingGame;
+
+const GAME_RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function isPrime($num)
 {
-    if ($num == 1) {
+    if ($num <= 1) {
         return false;
     }
     for ($i = 2; $i <= sqrt($num); $i++) {
@@ -19,16 +21,14 @@ function isPrime($num)
 
 function run()
 {
-    $gameRule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $gameDataMaking = function () {
-        $randNum = mt_rand(1, 100);
-        if (isPrime($randNum)) {
+    $makingGameData = function () {
+        $gameQuestion = mt_rand(1, 100);
+        if (isPrime($gameQuestion)) {
             $gameCorrectAnswer = "yes";
         } else {
             $gameCorrectAnswer = "no";
         }
-        $gameQuestion = (string) $randNum;
         return [$gameQuestion, $gameCorrectAnswer];
     };
-    gameProcessing($gameRule, $gameDataMaking);
+    processingGame(GAME_RULE, $makingGameData);
 }

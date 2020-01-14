@@ -1,24 +1,25 @@
 <?php
 
-namespace Brain\Games\Progression;
+namespace BrainGames\games\progression;
 
-use function BrainGames\Core\gameProcessing;
+use function BrainGames\core\processingGame;
 
-function progressionGen()
+const GAME_RULE = 'What number is missing in the progression?';
+const PROGRESSION_LENGTH = 10;
+
+function genProgression()
 {
-    $arrayStep = rand(1, 10);
-    $arrayEnd = $arrayStep * 10;
-    $progression = range($arrayStep, $arrayEnd, $arrayStep);
+    $progressionStep = rand(1, 10);
+    $progressionEnd = $progressionStep * PROGRESSION_LENGTH;
+    $progression = range($progressionStep, $progressionEnd, $progressionStep);
     return $progression;
 }
 
 function run()
 {
-    $gameRule = 'What number is missing in the progression?';
-    $gameDataMaking = function () {
-        $progression = progressionGen();
-        $progressionLength = count($progression) - 1;
-        $randIndex = mt_rand(0, $progressionLength);
+    $makingGameData = function () {
+        $progression = genProgression();
+        $randIndex = mt_rand(0, PROGRESSION_LENGTH);
         $hiddenDigit = $progression[$randIndex];
         $replacement = '..';
         $progression[$randIndex] = $replacement;
@@ -26,5 +27,5 @@ function run()
         $gameCorrectAnswer = (string) $hiddenDigit;
         return [$gameQuestion, $gameCorrectAnswer];
     };
-    gameProcessing($gameRule, $gameDataMaking);
+    processingGame(GAME_RULE, $makingGameData);
 }
