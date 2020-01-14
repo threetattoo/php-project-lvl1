@@ -1,13 +1,13 @@
 <?php
 
-namespace BrainGames\Core;
+namespace BrainGames\core;
 
 use function cli\line;
 use function cli\prompt;
 
 const ROUNDS_COUNT = 3;
 
-function gameProcessing($gameRule, $gameDataMaking)
+function processingGame($gameRule, $makingGameData)
 {
     line('Welcome to the Brain Game!');
     line($gameRule);
@@ -15,7 +15,7 @@ function gameProcessing($gameRule, $gameDataMaking)
     line("Hello, %s!", $name);
     $count = 0;
     do {
-        [$gameQuestion, $gameCorrectAnswer] = $gameDataMaking();
+        [$gameQuestion, $gameCorrectAnswer] = $makingGameData();
         line("Question: %s", $gameQuestion);
         $userAnswer = prompt('Your answer');
         if ($userAnswer === $gameCorrectAnswer) {
@@ -24,10 +24,8 @@ function gameProcessing($gameRule, $gameDataMaking)
         } else {
             line("{$userAnswer} is wrong answer ;(. Correct answer was '{$gameCorrectAnswer}'.");
             line("Let's try again, %s!", $name);
-            break;
+            return false;
         }
     } while ($count < ROUNDS_COUNT);
-    if ($count == ROUNDS_COUNT) {
-        line("Congratulations, %s!", $name);
-    }
 }
+line("Congratulations, %s!", $name);
