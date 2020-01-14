@@ -7,7 +7,7 @@ use function cli\prompt;
 
 const ROUNDS_COUNT = 3;
 
-function processingGame($gameRule, $makingGameData)
+function processingGame($game_rule, $makingGameData)
 {
     line('Welcome to the Brain Game!');
     line($gameRule);
@@ -27,5 +27,5 @@ function processingGame($gameRule, $makingGameData)
             return false;
         }
     } while ($count < ROUNDS_COUNT);
+    return line("Congratulations, %s!", $name);
 }
-line("Congratulations, %s!", $name);
