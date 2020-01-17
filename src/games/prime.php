@@ -2,9 +2,11 @@
 
 namespace BrainGames\games\prime;
 
-use function BrainGames\core\processingGame;
+use function BrainGames\core\runGameProcess;
 
 const GAME_RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const MIN_RAND_VALUE = 1;
+const MAX_RAND_VALUE = 100;
 
 function isPrime($num)
 {
@@ -21,14 +23,10 @@ function isPrime($num)
 
 function run()
 {
-    $makingGameData = function () {
-        $gameQuestion = mt_rand(1, 100);
-        if (isPrime($gameQuestion)) {
-            $gameCorrectAnswer = "yes";
-        } else {
-            $gameCorrectAnswer = "no";
-        }
+    $makeGameData = function () {
+        $gameQuestion = mt_rand(MIN_RAND_VALUE, MAX_RAND_VALUE);
+        $gameCorrectAnswer = isPrime($gameQuestion) ? "yes" : "no";
         return [$gameQuestion, $gameCorrectAnswer];
     };
-    processingGame(GAME_RULE, $makingGameData);
+    runGameProcess(GAME_RULE, $makeGameData);
 }
