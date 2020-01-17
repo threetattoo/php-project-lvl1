@@ -2,27 +2,23 @@
 
 namespace BrainGames\games\even;
 
-use function BrainGames\core\processingGame;
+use function BrainGames\core\runGameProcess;
 
 const GAME_RULE = 'Answer "yes" if the number is even, otherwise answer "no".';
+const MIN_RAND_VALUE = 1;
+const MAX_RAND_VALUE = 100;
 
 function isEven($num)
 {
-    if ($num % 2 === 0) {
-        $result = 'yes';
-    } else {
-        $result = 'no';
-    }
-    return $result;
+    return ($num % 2 === 0) ? true : false;
 }
 
 function run()
 {
-    $makingGameData = function () {
-        $randNum = mt_rand(1, 100);
-        $gameCorrectAnswer = isEven($randNum);
-        $gameQuestion = (string) $randNum;
+    $makeGameData = function () {
+        $gameQuestion = mt_rand(MIN_RAND_VALUE, MAX_RAND_VALUE);
+        $gameCorrectAnswer = isEven($gameQuestion) ? "yes" : "no";
         return [$gameQuestion, $gameCorrectAnswer];
     };
-    processingGame(GAME_RULE, $makingGameData);
+    runGameProcess(GAME_RULE, $makeGameData);
 }
