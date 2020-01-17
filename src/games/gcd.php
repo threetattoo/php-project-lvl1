@@ -2,9 +2,11 @@
 
 namespace BrainGames\games\gcd;
 
-use function BrainGames\core\processingGame;
+use function BrainGames\core\runGameProcess;
 
 const GAME_RULE = 'Find the greatest common divisor of given numbers.';
+const MIN_RAND_VALUE = 1;
+const MAX_RAND_VALUE = 50;
 
 function gcd($n, $m)
 {
@@ -17,13 +19,13 @@ function gcd($n, $m)
 
 function run()
 {
-    $makingGameData = function () {
-        $randNumOne = mt_rand(1, 50);
-        $randNumTwo = mt_rand(1, 50);
+    $makeGameData = function () {
+        $randNumOne = mt_rand(MIN_RAND_VALUE, MAX_RAND_VALUE);
+        $randNumTwo = mt_rand(MIN_RAND_VALUE, MAX_RAND_VALUE);
         $result = gcd($randNumOne, $randNumTwo);
         $gameQuestion = "$randNumOne $randNumTwo";
         $gameCorrectAnswer = (string) $result;
         return [$gameQuestion, $gameCorrectAnswer];
     };
-    processingGame(GAME_RULE, $makingGameData);
+    runGameProcess(GAME_RULE, $makeGameData);
 }
