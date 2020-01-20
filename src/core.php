@@ -22,7 +22,6 @@ function runGameProcess($game_rule, $makeGameData)
         } else {
             line("{$userAnswer} is wrong answer ;(. Correct answer was '{$gameCorrectAnswer}'.");
             line("Let's try again, %s!", $name);
-            return false;
         }
     }
     line("Congratulations, %s!", $name);
